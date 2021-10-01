@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleMealPlanApp.Views.MyMealsPage"
+             xmlns:local="clr-namespace:SimpleMealPlanApp.Behaviors" 
+             xmlns:local1="clr-namespace:SimpleMealPlanApp.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local1:MyMealsViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Create New Meal"
+                     Command="{Binding AddToMealPlanCommand}">
+        </ToolbarItem>        
+    </ContentPage.ToolbarItems>
+
+    <StackLayout
+        Padding="5">
+        <SearchBar x:Name="MealSearch"
+                   Placeholder="search my meals"
+                   PlaceholderColor="DimGray"
+                   TextColor="Black"
+                   FontAttributes="Italic"
+                   Text="{Binding SearchMealInputValue}">
+            <SearchBar.Behaviors>
+                <local:EventToCommandBehavior EventName="TextChanged"
+                                              Command="{Binding SearchMealCommand}"
+                                              CommandParameter="{Binding Text, Source={x:Reference MealSearch}}"/>
+            </SearchBar.Behaviors>
+        </SearchBar>
+        <ListView x:Name="MealListView"
+                  ItemsSource="{Binding SearchResults}"
+                  SelectedItem="{Binding SelectedMeal}"
+                  InputTransparent="False">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label 
+                            x:Name="MealName"
+                            Text="{Binding MealName}"
+                            TextColor="Black"
+                            IsVisible="True" 
+                            TextType="Text"/>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button 
+                Text="Add to My Meal Plan"
+                TextColor="Blue"
+                FontAttributes="Italic"
+                FontSize="Medium"
+                Command="{Binding AddToMealPlanCommand}"
+                Clicked="AddToMealPlanButton_Clicked"
+                BackgroundColor="FloralWhite"/>
+    </StackLayout>
+
+</ContentPage>

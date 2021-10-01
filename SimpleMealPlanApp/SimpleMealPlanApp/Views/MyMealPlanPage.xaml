@@ -1,0 +1,430 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SimpleMealPlanApp.Views.MyMealPlanPage"
+             xmlns:local="clr-namespace:SimpleMealPlanApp.ViewModels" x:DataType="local:MyMealPlanViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <local:MyMealPlanViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="My Meals"
+                     Clicked="MyMeals_ClickedAsync">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout
+        Padding="5">
+        <Grid
+            x:Name="GridHeader"
+            BackgroundColor="FloralWhite"
+            Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="{Binding Day}"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Start"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="{Binding Brekky}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large"/>
+            <Label Text="{Binding Lunch}"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large"/>
+            <Label Text="{Binding Dinner}"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large"/>
+        </Grid>
+        <Grid
+            x:Name="GridMon"
+            BackgroundColor="LightGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Mon"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label x:Name="MonBrekky"
+                   Text="{Binding MonBrekkyMeal}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="MonBrekkyTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="MonLunch"
+                   Text="{Binding MonLunchMeal}"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="MonLunchTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="MonDinner"
+                   Text="{Binding MonDinnerMeal}"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="MonDinnerTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        <Grid
+            x:Name="GridTue"
+            BackgroundColor="Moccasin">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Tue"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label x:Name="TueBrekky"
+                   Text="{Binding TueBrekkyMeal}"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TueBrekkyTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="TueLunch"
+                   Text="{Binding TueLunchMeal}"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TueLunchTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label x:Name="TueDinner"
+                   Text="{Binding TueDinnerMeal}"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"
+                   FontAttributes="Italic">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="TueDinnerTapGestureRecognizer_TappedAsync"
+                        NumberOfTapsRequired="1"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+        <Grid
+            x:Name="GridWed"
+            BackgroundColor="LightGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Wed"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="MealR0C1"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C2"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C3"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+        </Grid>
+        <Grid
+            x:Name="GridThu"
+            BackgroundColor="Moccasin">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Thu"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="MealR0C1"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C2"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C3"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+        </Grid>
+        <Grid
+            x:Name="GridFri"
+            BackgroundColor="LightGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Fri"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="MealR0C1"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C2"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C3"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+        </Grid>
+        <Grid
+            x:Name="GridSat"
+            BackgroundColor="Moccasin">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Sat"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="MealR0C1"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C2"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C3"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+        </Grid>
+        <Grid
+            x:Name="GridSun"
+            BackgroundColor="LightGreen">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+                    Width="45" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+                <ColumnDefinition
+                    Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Text="Sun"
+                   Grid.Row="0"
+                   Grid.Column="0"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontAttributes="Bold"
+                   FontSize="Large" />
+            <Label Text="MealR0C1"
+                   Grid.Row="0"
+                   Grid.Column="1"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C2"
+                   Grid.Row="0"
+                   Grid.Column="2"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+            <Label Text="MealR0C3"
+                   Grid.Row="0"
+                   Grid.Column="3"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center"
+                   FontSize="Medium"/>
+        </Grid>
+        <Grid
+            x:Name="GridButtonMealIdeas">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Text="Meal Ideas"
+                    TextColor="Blue"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Command="{Binding OpenWebMealIdeasCommand}"
+                    BackgroundColor="FloralWhite"/>
+        </Grid>
+    </StackLayout>
+</ContentPage>
