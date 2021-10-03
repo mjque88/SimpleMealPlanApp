@@ -1,5 +1,7 @@
 ﻿using SimpleMealPlanApp.Views;
 using System;
+using System.IO;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 

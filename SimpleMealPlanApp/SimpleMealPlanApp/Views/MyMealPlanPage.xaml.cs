@@ -12,6 +12,13 @@ namespace SimpleMealPlanApp.Views
         public MyMealPlanPage()
         {
             InitializeComponent();
+
+            MessagingCenter.Subscribe<MyMealPlanViewModel>(this, "ClearAllMeals", async (sender) =>
+            {
+               bool clearAllAnswer = await DisplayAlert("Confirm Action:", "Would you like to clear all meals?", "Yes", "No");
+
+               MessagingCenter.Send(this, "ClearAllMealsAnswer", clearAllAnswer);
+            });
         }
 
         // MyMeals Toolbar Navigation
@@ -19,6 +26,7 @@ namespace SimpleMealPlanApp.Views
         {
             await Navigation.PushAsync(new MyMealsPage());
         }
+
 
         // Monday Meal Time TapGestureRecognizer
         private async void MonBrekkyTapGestureRecognizer_TappedAsync(object sender, EventArgs e)

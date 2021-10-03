@@ -15,6 +15,7 @@
         </ToolbarItem>
     </ContentPage.ToolbarItems>
 
+    <ScrollView>
     <StackLayout
         Padding="5">
         <Grid
@@ -89,7 +90,7 @@
                    FontAttributes="Bold"
                    FontSize="Large" />
             <Label x:Name="MonBrekky"
-                   Text="{Binding MonBrekkyMeal}"
+                   Text="{Binding MonBrekky}"
                    Grid.Row="0"
                    Grid.Column="1"
                    HorizontalTextAlignment="Center"
@@ -103,7 +104,7 @@
                 </Label.GestureRecognizers>
             </Label>
             <Label x:Name="MonLunch"
-                   Text="{Binding MonLunchMeal}"
+                   Text="{Binding MonLunch}"
                    Grid.Row="0"
                    Grid.Column="2"
                    HorizontalTextAlignment="Center"
@@ -117,7 +118,7 @@
                 </Label.GestureRecognizers>
             </Label>
             <Label x:Name="MonDinner"
-                   Text="{Binding MonDinnerMeal}"
+                   Text="{Binding MonDinner}"
                    Grid.Row="0"
                    Grid.Column="3"
                    HorizontalTextAlignment="Center"
@@ -156,7 +157,7 @@
                    FontAttributes="Bold"
                    FontSize="Large" />
             <Label x:Name="TueBrekky"
-                   Text="{Binding TueBrekkyMeal}"
+                   Text="{Binding TueBrekky}"
                    Grid.Row="0"
                    Grid.Column="1"
                    HorizontalTextAlignment="Center"
@@ -170,7 +171,7 @@
                 </Label.GestureRecognizers>
             </Label>
             <Label x:Name="TueLunch"
-                   Text="{Binding TueLunchMeal}"
+                   Text="{Binding TueLunch}"
                    Grid.Row="0"
                    Grid.Column="2"
                    HorizontalTextAlignment="Center"
@@ -184,7 +185,7 @@
                 </Label.GestureRecognizers>
             </Label>
             <Label x:Name="TueDinner"
-                   Text="{Binding TueDinnerMeal}"
+                   Text="{Binding TueDinner}"
                    Grid.Row="0"
                    Grid.Column="3"
                    HorizontalTextAlignment="Center"
@@ -426,5 +427,20 @@
                     Command="{Binding OpenWebMealIdeasCommand}"
                     BackgroundColor="FloralWhite"/>
         </Grid>
+        <Grid
+            x:Name="GridButtonClearAllMeals">
+            <Grid.RowDefinitions>
+                <RowDefinition 
+                    Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Text="Clear All Meals"
+                    TextColor="PaleVioletRed"
+                    FontAttributes="None"
+                    FontFamily="Arial"
+                    FontSize="Small"
+                    Command="{Binding ClearAllMealsCommand}"
+                    BackgroundColor="Beige"/>
+        </Grid>
     </StackLayout>
+    </ScrollView>
 </ContentPage>

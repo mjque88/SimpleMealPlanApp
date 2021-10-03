@@ -1,11 +1,8 @@
 ﻿using SimpleMealPlanApp.Models;
 using SimpleMealPlanApp.Services;
 using SimpleMealPlanApp.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -67,8 +64,6 @@ namespace SimpleMealPlanApp.ViewModels
 
             CreateMealCommand = new AsyncCommand(CreateNewMeal);
             SearchMealCommand = new AsyncCommand(SearchMeal);
-
-            //SearchMealResults = new ObservableCollection<Meal>();
 
             SelectedMeal = new Meal();
 
