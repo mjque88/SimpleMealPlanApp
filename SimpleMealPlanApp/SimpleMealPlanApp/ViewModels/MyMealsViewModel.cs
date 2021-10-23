@@ -15,9 +15,27 @@ namespace SimpleMealPlanApp.ViewModels
     {
         public string Title { get; } = "My Meals";
 
-        public Meal SelectedMeal { get;  set; }
+        private Meal selectedMeal { get; set; }
+        public Meal SelectedMeal
+        {
+            get => selectedMeal;
+            set
+            {
+                selectedMeal = value;
+                NotifyPropertyChanged();
+            }
+        }
 
-        public string MealName { get; set; }
+        private Meal meal { get; set; }
+        public Meal NewMeal
+        {
+            get => meal;
+            set
+            {
+                meal = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         public string SearchMealInputValue { get; set; }
 
@@ -26,10 +44,7 @@ namespace SimpleMealPlanApp.ViewModels
         private ObservableCollection<Meal> searchResults;
         public ObservableCollection<Meal> SearchResults
         {
-            get
-            {
-                return searchResults;
-            }
+            get => searchResults;
             set
             {
                 searchResults = value;
@@ -41,9 +56,7 @@ namespace SimpleMealPlanApp.ViewModels
         public ObservableCollection<Meal> Meals
         {
             get
-            {
-                return meals;
-            }
+            => meals;
             set
             {
                 meals = value;
@@ -51,21 +64,20 @@ namespace SimpleMealPlanApp.ViewModels
             }
         }
 
-        public AsyncCommand CreateMealCommand { get; }
-        public AsyncCommand SearchMealCommand { get; }
-
-
         public MyMealsViewModel()
         {
+            //Load Meals from Database
             Task.Run(async () =>
             {
                 Meals = await MealService.GetMeal();
             });
 
-            CreateMealCommand = new AsyncCommand(CreateNewMeal);
-            SearchMealCommand = new AsyncCommand(SearchMeal);
+            SearchMealCommand = new AsyncCommand<string>(SearchMeal);
+            //AddMealCommand = new AsyncCommand<Meal>(AddMeal);
 
+            //Initalise properties
             SelectedMeal = new Meal();
+            NewMeal = new Meal();
 
             //Monday Meal Plan Subscriptions
             MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "MonBrekkyAddMeal",
@@ -104,8 +116,113 @@ namespace SimpleMealPlanApp.ViewModels
                 {
                     MealPlanMealDay = tueDinner;
                 });
+
+            //Wednesday Meal Plan Subscriptions
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "WedBrekkyAddMeal",
+                (sender, wedBrekky) =>
+                {
+                    MealPlanMealDay = wedBrekky;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "WedLunchAddMeal",
+                (sender, wedLunch) =>
+                {
+                    MealPlanMealDay = wedLunch;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "WedDinnerAddMeal",
+                (sender, wedDinner) =>
+                {
+                    MealPlanMealDay = wedDinner;
+                });
+
+            //Thursday Meal Plan Subscriptions
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "ThuBrekkyAddMeal",
+                (sender, thuBrekky) =>
+                {
+                    MealPlanMealDay = thuBrekky;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "ThuLunchAddMeal",
+                (sender, thuLunch) =>
+                {
+                    MealPlanMealDay = thuLunch;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "ThuDinnerAddMeal",
+                (sender, thuDinner) =>
+                {
+                    MealPlanMealDay = thuDinner;
+                });
+
+            //Friday Meal Plan Subscriptions
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "FriBrekkyAddMeal",
+                (sender, friBrekky) =>
+                {
+                    MealPlanMealDay = friBrekky;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "FriLunchAddMeal",
+                (sender, friLunch) =>
+                {
+                    MealPlanMealDay = friLunch;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "FriDinnerAddMeal",
+                (sender, friDinner) =>
+                {
+                    MealPlanMealDay = friDinner;
+                });
+
+            //Saturday Meal Plan Subscriptions
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SatBrekkyAddMeal",
+                (sender, satBrekky) =>
+                {
+                    MealPlanMealDay = satBrekky;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SatLunchAddMeal",
+                (sender, satLunch) =>
+                {
+                    MealPlanMealDay = satLunch;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SatDinnerAddMeal",
+                (sender, satDinner) =>
+                {
+                    MealPlanMealDay = satDinner;
+                });
+
+            //Sunday Meal Plan Subscriptions
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SunBrekkyAddMeal",
+                (sender, sunBrekky) =>
+                {
+                    MealPlanMealDay = sunBrekky;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SunLunchAddMeal",
+                (sender, sunLunch) =>
+                {
+                    MealPlanMealDay = sunLunch;
+                });
+
+            MessagingCenter.Subscribe<MyMealPlanPage, string>(this, "SunDinnerAddMeal",
+                (sender, sunDinner) =>
+                {
+                    MealPlanMealDay = sunDinner;
+                });
+
+            //Receive Created Meal
+
+            MessagingCenter.Subscribe<CreateOrEditMeal, Meal>(this, "CreateMeal",
+                async(sender, meal) =>
+                {
+                    NewMeal = meal;
+                    await MealService.AddMeal(meal.MealName);
+                });
         }
 
+        //Property Changed Event Handler
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -113,6 +230,8 @@ namespace SimpleMealPlanApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+
+        //Add to Meal Plan
         public ICommand AddToMealPlanCommand => new Command(AddToMealPlan);
 
         public void AddToMealPlan()
@@ -132,13 +251,27 @@ namespace SimpleMealPlanApp.ViewModels
             }
         }
 
-        async Task CreateNewMeal()
+        //Delete New Meal
+        public ICommand DeleteMealCommand => new Command<Meal>(RemoveMeal);
+
+        public async void RemoveMeal(Meal meal)
         {
-            await MealService.AddMeal(MealName);
+            await MealService.RemoveMeal(meal.Id);
+
+            //Refresh after each delete
+            SearchResults.Clear();
+            Meals.Clear();
+
+            SearchResults = await MealService.GetSearchResults(SearchMealInputValue.ToLower());
+            Meals = await MealService.GetMeal();
         }
 
-        async Task SearchMeal()
+        //Search Meal
+        public AsyncCommand<string> SearchMealCommand { get; }
+
+        public async Task SearchMeal(string searchMealInputValue)
         {
+            SearchMealInputValue = searchMealInputValue;
             SearchResults = await MealService.GetSearchResults(SearchMealInputValue.ToLower());
         }
     }

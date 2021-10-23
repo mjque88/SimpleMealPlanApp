@@ -8,21 +8,35 @@ using Xamarin.Essentials;
 
 namespace SimpleMealPlanApp.Services
 {
-    public static class MealService
+    public class MealService
     {
-        static SQLiteAsyncConnection db;
+        static SQLiteAsyncConnection db2;
 
-        static async Task Init()
+        static MealService()
         {
-            if (db != null)
+            if (db2 != null)
             {
                 return;
             }
 
             var databasePath = Path.Combine(FileSystem.AppDataDirectory, "MyMealData.db");
-            db = new SQLiteAsyncConnection(databasePath);
+            db2 = new SQLiteAsyncConnection(databasePath);
+            db2.CreateTableAsync<Meal>();
+        }
 
-            await db.CreateTableAsync<Meal>();
+
+
+        static async Task Init()
+        {
+            if (db2 != null)
+            {
+                return;
+            }
+
+            var databasePath = Path.Combine(FileSystem.AppDataDirectory, "MyMealData.db");
+            db2 = new SQLiteAsyncConnection(databasePath);
+
+            await db2.CreateTableAsync<Meal>();
         }
 
         public static async Task AddMeal(string mealname)
@@ -33,22 +47,22 @@ namespace SimpleMealPlanApp.Services
                 MealName = mealname
             };
 
-            var id = await db.InsertAsync(meal);
+            var id = await db2.InsertAsync(meal);
         }
 
         public static async Task RemoveMeal(int id)
         {
             await Init();
 
-            await db.DeleteAsync<Meal>(id);
+            await db2.DeleteAsync<Meal>(id);
         }
 
         public static async Task<ObservableCollection<Meal>> GetMeal()
         {
             await Init();
 
-            var meal = await db.Table<Meal>().ToListAsync();
-            var meals = new ObservableCollection<Meal>(meal);
+            var meal = await db2.Table<Meal>().ToListAsync();
+            var meals = new ObservableCollection<Meal>(meal.Distinct());
             return meals;
         }
 
@@ -56,9 +70,9 @@ namespace SimpleMealPlanApp.Services
         {
             await Init();
 
-            var meal = await db.Table<Meal>().ToListAsync();
+            var meal = await db2.Table<Meal>().ToListAsync();
             var searchMealResults = meal.Where(i => i.MealName.ToLower().Contains(queryString));
-            var oCSearchMealResults = new ObservableCollection<Meal>(searchMealResults);
+            var oCSearchMealResults = new ObservableCollection<Meal>(searchMealResults.Distinct());
             return oCSearchMealResults;
         }
 
@@ -66,7 +80,7 @@ namespace SimpleMealPlanApp.Services
         {
             await Init();
 
-            var meal = await db.Table<Meal>().ToListAsync();
+            var meal = await db2.Table<Meal>().ToListAsync();
             var meals = new ObservableCollection<Meal>(meal);
             meals.Clear();
             return meals;

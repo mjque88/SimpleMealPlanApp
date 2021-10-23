@@ -16,431 +16,578 @@
     </ContentPage.ToolbarItems>
 
     <ScrollView>
-    <StackLayout
-        Padding="5">
-        <Grid
-            x:Name="GridHeader"
-            BackgroundColor="FloralWhite"
+        <StackLayout
             Padding="5">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="{Binding Day}"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Start"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="{Binding Brekky}"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large"/>
-            <Label Text="{Binding Lunch}"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large"/>
-            <Label Text="{Binding Dinner}"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large"/>
-        </Grid>
-        <Grid
-            x:Name="GridMon"
-            BackgroundColor="LightGreen">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Mon"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label x:Name="MonBrekky"
-                   Text="{Binding MonBrekky}"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="MonBrekkyTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label x:Name="MonLunch"
-                   Text="{Binding MonLunch}"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="MonLunchTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label x:Name="MonDinner"
-                   Text="{Binding MonDinner}"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="MonDinnerTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-        <Grid
-            x:Name="GridTue"
-            BackgroundColor="Moccasin">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Tue"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label x:Name="TueBrekky"
-                   Text="{Binding TueBrekky}"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="TueBrekkyTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label x:Name="TueLunch"
-                   Text="{Binding TueLunch}"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="TueLunchTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-            <Label x:Name="TueDinner"
-                   Text="{Binding TueDinner}"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"
-                   FontAttributes="Italic">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Tapped="TueDinnerTapGestureRecognizer_TappedAsync"
-                        NumberOfTapsRequired="1"/>
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-        <Grid
-            x:Name="GridWed"
-            BackgroundColor="LightGreen">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Wed"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="MealR0C1"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C2"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C3"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-        </Grid>
-        <Grid
-            x:Name="GridThu"
-            BackgroundColor="Moccasin">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Thu"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="MealR0C1"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C2"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C3"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-        </Grid>
-        <Grid
-            x:Name="GridFri"
-            BackgroundColor="LightGreen">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Fri"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="MealR0C1"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C2"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C3"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-        </Grid>
-        <Grid
-            x:Name="GridSat"
-            BackgroundColor="Moccasin">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Sat"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="MealR0C1"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C2"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C3"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-        </Grid>
-        <Grid
-            x:Name="GridSun"
-            BackgroundColor="LightGreen">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="45" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-                <ColumnDefinition
-                    Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Text="Sun"
-                   Grid.Row="0"
-                   Grid.Column="0"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontAttributes="Bold"
-                   FontSize="Large" />
-            <Label Text="MealR0C1"
-                   Grid.Row="0"
-                   Grid.Column="1"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C2"
-                   Grid.Row="0"
-                   Grid.Column="2"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-            <Label Text="MealR0C3"
-                   Grid.Row="0"
-                   Grid.Column="3"
-                   HorizontalTextAlignment="Center"
-                   VerticalTextAlignment="Center"
-                   FontSize="Medium"/>
-        </Grid>
-        <Grid
-            x:Name="GridButtonMealIdeas">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Button Text="Meal Ideas"
-                    TextColor="Blue"
-                    FontAttributes="Italic"
-                    FontSize="Medium"
-                    Command="{Binding OpenWebMealIdeasCommand}"
-                    BackgroundColor="FloralWhite"/>
-        </Grid>
-        <Grid
-            x:Name="GridButtonClearAllMeals">
-            <Grid.RowDefinitions>
-                <RowDefinition 
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            <Button Text="Clear All Meals"
-                    TextColor="PaleVioletRed"
-                    FontAttributes="None"
-                    FontFamily="Arial"
-                    FontSize="Small"
-                    Command="{Binding ClearAllMealsCommand}"
-                    BackgroundColor="Beige"/>
-        </Grid>
-    </StackLayout>
+            <Grid
+                x:Name="GridHeader"
+                BackgroundColor="FloralWhite"
+                Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="{Binding Day}"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Start"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label Text="{Binding Brekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large"/>
+                <Label Text="{Binding Lunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large"/>
+                <Label Text="{Binding Dinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large"/>
+            </Grid>
+            <Grid
+                x:Name="GridMon"
+                BackgroundColor="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Mon"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="MonBrekky"
+                       Text="{Binding MonBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="MonBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="MonLunch"
+                       Text="{Binding MonLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="MonLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="MonDinner"
+                       Text="{Binding MonDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="MonDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridTue"
+                BackgroundColor="Moccasin">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Tue"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="TueBrekky"
+                       Text="{Binding TueBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TueBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="TueLunch"
+                       Text="{Binding TueLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TueLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="TueDinner"
+                       Text="{Binding TueDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="TueDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridWed"
+                BackgroundColor="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Wed"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="WedBrekky"
+                       Text="{Binding WedBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="WedBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="WedLunch"
+                       Text="{Binding WedLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="WedLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="WedDinner"
+                       Text="{Binding WedDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="WedDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridThu"
+                BackgroundColor="Moccasin">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Thu"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="ThuBrekky"
+                       Text="{Binding ThuBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="ThuBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="ThuLunch"
+                       Text="{Binding ThuLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="ThuLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="ThuDinner"
+                       Text="{Binding ThuDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="ThuDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridFri"
+                BackgroundColor="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Fri"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="FriBrekky"
+                       Text="{Binding FriBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="FriBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="FriLunch"
+                       Text="{Binding FriLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="FriLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="FriDinner"
+                       Text="{Binding FriDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="FriDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridSat"
+                BackgroundColor="Moccasin">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Sat"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="SatBrekky"
+                       Text="{Binding SatBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SatBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="SatLunch"
+                       Text="{Binding SatLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SatLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="SatDinner"
+                       Text="{Binding SatDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SatDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridSun"
+                BackgroundColor="LightGreen">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="45" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Sun"
+                       Grid.Row="0"
+                       Grid.Column="0"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontAttributes="Bold"
+                       FontSize="Large" />
+                <Label x:Name="SunBrekky"
+                       Text="{Binding SunBrekky}"
+                       Grid.Row="0"
+                       Grid.Column="1"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SunBrekkyTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="SunLunch"
+                       Text="{Binding SunLunch}"
+                       Grid.Row="0"
+                       Grid.Column="2"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SunLunchTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label x:Name="SunDinner"
+                       Text="{Binding SunDinner}"
+                       Grid.Row="0"
+                       Grid.Column="3"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="SunDinnerTapGestureRecognizer_TappedAsync"
+                            NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+            <Grid
+                x:Name="GridButtonMealIdeas">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Text="Meal Ideas"
+                        TextColor="Blue"
+                        FontAttributes="Italic"
+                        FontSize="Medium"
+                        Command="{Binding OpenWebMealIdeasCommand}"
+                        BackgroundColor="FloralWhite"/>
+            </Grid>
+            <Grid
+                x:Name="GridButtonClearAllMeals">
+                <Grid.RowDefinitions>
+                    <RowDefinition 
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Button Text="Clear All Meals"
+                        TextColor="OrangeRed"
+                        FontAttributes="None"
+                        FontFamily="Arial"
+                        FontSize="Small"
+                        Command="{Binding ClearAllMealsCommand}"
+                        BackgroundColor="Beige"/>
+            </Grid>
+            <Grid>
+                <Slider x:Name="MealFontSlider"
+                        VerticalOptions="Center"
+                        FlowDirection="LeftToRight"
+                        ThumbColor="DarkSlateGray"
+                        MaximumTrackColor="Red"
+                        MinimumTrackColor="Green"
+                        Maximum="25"
+                        Minimum="15"
+                        Grid.Row="0"
+                        ValueChanged="FontSlider_ValueChanged"/>
+                <Label Text="Adjust Meal Font Size"
+                       Grid.Row="2"
+                       HorizontalTextAlignment="Center"/>
+                <Label x:Name="FontSize"
+                       Grid.Row="1"
+                       HorizontalTextAlignment="Center"/>
+                <Button x:Name="SaveFontSize"
+                        Text="Tap to Save Font Size"
+                        Grid.Row="3"
+                        FontFamily="Arial"
+                        FontSize="Small"
+                        TextColor="DarkTurquoise"
+                        BackgroundColor="WhiteSmoke"
+                        Clicked="SaveFontSize_Clicked"/>
+            </Grid>
+
+        </StackLayout>
     </ScrollView>
 </ContentPage>

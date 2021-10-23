@@ -11,50 +11,95 @@
     </ContentPage.BindingContext>
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Create New Meal"
-                     Command="{Binding AddToMealPlanCommand}">
-        </ToolbarItem>        
+        <ToolbarItem Text="Create Meal"
+                     Clicked="CreateMeal_ClickedAsync">
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
-
-    <StackLayout
-        Padding="5">
-        <SearchBar x:Name="MealSearch"
-                   Placeholder="search my meals"
-                   PlaceholderColor="DimGray"
-                   TextColor="Black"
-                   FontAttributes="Italic"
-                   Text="{Binding SearchMealInputValue}">
-            <SearchBar.Behaviors>
-                <local:EventToCommandBehavior EventName="TextChanged"
-                                              Command="{Binding SearchMealCommand}"
-                                              CommandParameter="{Binding Text, Source={x:Reference MealSearch}}"/>
-            </SearchBar.Behaviors>
-        </SearchBar>
-        <ListView x:Name="MealListView"
-                  ItemsSource="{Binding SearchResults}"
-                  SelectedItem="{Binding SelectedMeal}"
-                  InputTransparent="False">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Label 
-                            x:Name="MealName"
-                            Text="{Binding MealName}"
-                            TextColor="Black"
-                            IsVisible="True" 
-                            TextType="Text"/>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        <Button 
-                Text="Add to My Meal Plan"
-                TextColor="Blue"
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <ScrollView IsClippedToBounds="False" 
+                    HorizontalScrollBarVisibility="Default" 
+                    Padding="1" 
+                    VerticalScrollBarVisibility="Always"
+                    Grid.Row="0">
+            <StackLayout Padding="10" 
+                     IsClippedToBounds="True"
+                     VerticalOptions="Fill">
+                <SearchBar x:Name="MealSearch"
+                       Placeholder="search my meals"
+                       PlaceholderColor="DimGray"
+                       TextColor="Black"
+                       FontAttributes="Italic"
+                       Text="{Binding SearchMealInputValue}">
+                    <SearchBar.Behaviors>
+                        <local:EventToCommandBehavior x:Name="Behavior"
+                                                      EventName="TextChanged"
+                                                      Command="{Binding SearchMealCommand}"
+                                                      CommandParameter="{Binding Text, Source={x:Reference MealSearch}}"/>
+                    </SearchBar.Behaviors>
+                </SearchBar>
+                <ListView x:Name="MealListView"
+                      ItemsSource="{Binding SearchResults}"
+                      SelectedItem="{Binding SelectedMeal}"
+                      InputTransparent="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <SwipeView>
+                                    <SwipeView.LeftItems>
+                                        <SwipeItems>
+                                            <SwipeItem Text="Delete"
+                                                   BackgroundColor="Red"
+                                                   Command="{Binding Path=BindingContext.DeleteMealCommand, Source={Reference MealListView}}"
+                                                   CommandParameter="{Binding .}">
+                                            </SwipeItem>
+                                        </SwipeItems>
+                                    </SwipeView.LeftItems>
+                                    <FlexLayout JustifyContent="SpaceBetween"
+                                                AlignItems="Center"
+                                                Padding="10,1">
+                                        <Label x:Name="MealName"
+                                           Text="{Binding MealName}"
+                                           TextColor="Black"
+                                           IsVisible="True" 
+                                           TextType="Text"
+                                           FontSize="Medium"    
+                                           VerticalTextAlignment="Start"
+                                           BackgroundColor="White"/>
+                                        <ImageButton Source="rubbish.jpg"
+                                           Scale="0.7"
+                                           Command="{Binding Path=BindingContext.DeleteMealCommand, Source={Reference MealListView}}"
+                                           CommandParameter="{Binding .}">
+                                        </ImageButton>
+                                    </FlexLayout>
+                                </SwipeView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+        <Button Text="Add to My Meal Plan"
+                    TextColor="Blue"
+                    FontAttributes="Italic"
+                    FontSize="Medium"
+                    Command="{Binding AddToMealPlanCommand}"
+                    Clicked="AddToMealPlanButton_Clicked"
+                    BackgroundColor="FloralWhite"
+                    VerticalOptions="EndAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    Grid.Row="0"/>
+        <Button Text="Return to My Meal Plan"
+                TextColor="Violet"
                 FontAttributes="Italic"
                 FontSize="Medium"
-                Command="{Binding AddToMealPlanCommand}"
-                Clicked="AddToMealPlanButton_Clicked"
-                BackgroundColor="FloralWhite"/>
-    </StackLayout>
-
+                Clicked="ReturnToMealPlanButton_Clicked"
+                BackgroundColor="FloralWhite"
+                VerticalOptions="EndAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Grid.Row="1"/>
+    </Grid>
 </ContentPage>

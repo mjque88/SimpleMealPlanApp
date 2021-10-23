@@ -49,5 +49,16 @@ namespace SimpleMealPlanApp.Views
                 _ = Navigation.PopAsync();
             }
         }
+
+        private async void CreateMeal_ClickedAsync(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CreateOrEditMeal());
+        }
+
+        private void ReturnToMealPlanButton_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new MyMealPlanPage());
+        }
+
     }
 }

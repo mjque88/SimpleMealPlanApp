@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SimpleMealPlanApp.ViewModels"
+             x:Class="SimpleMealPlanApp.Views.CreateOrEditMeal"
+             Title="Create Meal">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="My Meals Page"
+                     Clicked="MyMeals_ClickedAsync">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.BindingContext>
+        <local:CreateMealViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Meal Name"
+                   Text="{Binding Meal.MealName}"
+                   FontAttributes="Italic">
+            </Entry>
+            <Button Text="Save Meal"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    FontFamily="Arial"
+                    FontSize="Small"
+                    BackgroundColor="LightGray"
+                    Clicked="CreateMealButton_Clicked" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
