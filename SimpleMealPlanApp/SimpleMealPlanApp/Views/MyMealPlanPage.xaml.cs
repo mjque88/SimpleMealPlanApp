@@ -46,7 +46,7 @@ namespace SimpleMealPlanApp.Views
         {
             if (DayMealTimeService.FirstRun == true)
             {
-                DisplayAlert("Application Restart Required for First Use:", "Application will restart. Please re-open Simple Meal Plan", "CLOSE");
+                DisplayAlert("Application Restart Required for First Use:", "Application will close. Please re-open Simple Meal Plan", "CLOSE");
                 DayMealTimeService.FirstRun = false;
                 await Task.Delay(8000);
                 Environment.Exit(0);

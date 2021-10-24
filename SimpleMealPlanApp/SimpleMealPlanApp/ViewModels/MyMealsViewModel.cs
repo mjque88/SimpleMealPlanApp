@@ -214,13 +214,8 @@ namespace SimpleMealPlanApp.ViewModels
                 });
 
             //Receive Created Meal
+            AddCreatedMeal();
 
-            MessagingCenter.Subscribe<CreateOrEditMeal, Meal>(this, "CreateMeal",
-                async(sender, meal) =>
-                {
-                    NewMeal = meal;
-                    await MealService.AddMeal(meal.MealName);
-                });
         }
 
         //Property Changed Event Handler
@@ -231,6 +226,15 @@ namespace SimpleMealPlanApp.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        public void AddCreatedMeal()
+        {
+            MessagingCenter.Subscribe<CreateOrEditMeal, Meal>(this, "CreateMeal",
+            async (sender, meal) =>
+            {
+                NewMeal = meal;
+                await MealService.AddMeal(meal.MealName);
+            });
+        }
 
         //Add to Meal Plan
         public ICommand AddToMealPlanCommand => new Command(AddToMealPlan);
