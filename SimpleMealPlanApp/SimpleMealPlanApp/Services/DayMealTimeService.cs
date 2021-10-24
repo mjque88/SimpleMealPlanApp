@@ -12,7 +12,11 @@ namespace SimpleMealPlanApp.Services
     {
         private static SQLiteAsyncConnection db;
 
-        public bool FirstTimeUse = false;
+        public static bool FirstRun
+        {
+            get => Preferences.Get(nameof(FirstRun), true);
+            set => Preferences.Set(nameof(FirstRun), value);
+        }
 
         static DayMealTimeService()
         {
@@ -90,12 +94,12 @@ namespace SimpleMealPlanApp.Services
         {
             await Init();
 
-            await Task.Delay(2000);
+            await Task.Delay(1500);
 
             System.Collections.Generic.List<DayMealTime> dbDayMealTime = await db.Table<DayMealTime>().ToListAsync();
             while (dbDayMealTime.Count < 21)
             {
-                await Task.Delay(1000);
+                await Task.Delay(500);
             }
             System.Collections.Generic.IEnumerable<DayMealTime> listMealNameResults = dbDayMealTime.Where(i => i.DayMealTimeMeal.Contains(dayMealTime));
             DayMealTime dayMealTimeMealResults = listMealNameResults.FirstOrDefault();
@@ -224,6 +228,8 @@ namespace SimpleMealPlanApp.Services
                 await db.InsertOrReplaceAsync(dmtSunBrekky);
                 await db.InsertOrReplaceAsync(dmtSunLunch);
                 await db.InsertOrReplaceAsync(dmtSunDinner);
+
+                FirstRun = true;
             }
         }
     }

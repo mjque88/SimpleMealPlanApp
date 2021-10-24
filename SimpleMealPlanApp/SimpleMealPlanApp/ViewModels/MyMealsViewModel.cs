@@ -69,6 +69,7 @@ namespace SimpleMealPlanApp.ViewModels
             //Load Meals from Database
             Task.Run(async () =>
             {
+                await Task.Delay(1500);
                 Meals = await MealService.GetMeal();
             });
 

@@ -1,7 +1,9 @@
 ﻿using SimpleMealPlanApp.Models;
+using SimpleMealPlanApp.Services;
 using SimpleMealPlanApp.ViewModels;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -14,6 +16,8 @@ namespace SimpleMealPlanApp.Views
         public MyMealPlanPage()
         {
             InitializeComponent();
+
+            FirstTimeAppOpen();
 
             MessagingCenter.Subscribe<MyMealPlanViewModel>(this, "ClearAllMeals", async (sender) =>
             {
@@ -36,6 +40,21 @@ namespace SimpleMealPlanApp.Views
             }
 
             MealFontSlider.ValueChanged += FontSlider_ValueChanged;
+        }
+
+        private async Task FirstTimeAppOpen()
+        {
+            if (DayMealTimeService.FirstRun == true)
+            {
+                DisplayAlert("Application Restart Required for First Use:", "Application will restart. Please re-open Simple Meal Plan", "CLOSE");
+                DayMealTimeService.FirstRun = false;
+                await Task.Delay(8000);
+                Environment.Exit(0);
+            }
+            else
+            {
+                return;
+            }
         }
 
         private void FontSlider_ValueChanged(object sender, ValueChangedEventArgs e)

@@ -61,6 +61,8 @@ namespace SimpleMealPlanApp.Services
         {
             await Init();
 
+            await Task.Delay(1500);
+
             var meal = await db2.Table<Meal>().ToListAsync();
             var meals = new ObservableCollection<Meal>(meal.Distinct());
             return meals;
@@ -70,9 +72,11 @@ namespace SimpleMealPlanApp.Services
         {
             await Init();
 
+            await Task.Delay(2000);
+
             var meal = await db2.Table<Meal>().ToListAsync();
             var searchMealResults = meal.Where(i => i.MealName.ToLower().Contains(queryString));
-            var oCSearchMealResults = new ObservableCollection<Meal>(searchMealResults.Distinct());
+            var oCSearchMealResults = new ObservableCollection<Meal>(searchMealResults.ToList());
             return oCSearchMealResults;
         }
 
